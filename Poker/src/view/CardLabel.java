@@ -14,11 +14,12 @@ public class CardLabel extends Label {
 	}
 
 	
-	
 	public String cardPics(Card card) {
+		
 		String type = card.getType().toString();
 		Integer cardValue = card.getCardValue();
 		return cardValue + type+".png";
+	
 	}
 	
 	
@@ -27,7 +28,7 @@ public class CardLabel extends Label {
 	public void setCard(Card card) {
 		if (card != null) {
 			String cardImage = cardPics(card);
-			Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/" + cardImage));
+			Image image = new Image("./imagess/" + cardImage);
 			ImageView imagev = new ImageView(image);
 			imagev.fitWidthProperty().bind(this.widthProperty());
 			imagev.fitHeightProperty().bind(this.heightProperty());
@@ -38,6 +39,5 @@ public class CardLabel extends Label {
 		}
 	}
 
-
-
+	
 }

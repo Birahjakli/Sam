@@ -18,7 +18,7 @@ public class PlayerPane extends VBox {
     private Player player;
     
     public PlayerPane() {
-        super(); // Always call super-constructor first !!
+        super(); 
         this.getStyleClass().add("player"); // CSS style class
         
         // Add child nodes
@@ -37,12 +37,17 @@ public class PlayerPane extends VBox {
     }
     
     public void updatePlayerDisplay() {
-    	lblName.setText(player.getPlayerName());
+    	this.lblName.setText(this.player.getPlayerName());
     	for (int i = 0; i < Player.HAND_SIZE; i++) {
     		Card card = null;
-    		if (player.getCards().size() > i) card = player.getCards().get(i);
-    		CardLabel cl = (CardLabel) hboxCards.getChildren().get(i);
+    		if (this.player.getCards().size() > i) 
+    			card = this.player.getCards().get(i);
+    		CardLabel cl = (CardLabel) this.hboxCards.getChildren().get(i);
+    		if(card !=null) {
+    			
     		cl.cardPics(card);
+    		cl.setCard(card);
+    		}
     		Hand evaluation = player.evaluateHand();
     		if (evaluation != null)
     			lblEvaluation.setText(evaluation.toString());

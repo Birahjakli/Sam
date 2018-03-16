@@ -16,37 +16,47 @@ public class CardDeck {
 
     private Card CardDeck[];
     private final int AllCards=52;
-    private Random randCard;   
-   
- // Add all 52 cards
+    // Add all 52 cards
     public CardDeck(){        
-    	CardDeck = new Card[AllCards];
+    	CardDeck = new Card[this.AllCards];
         
-        for(int i=0;i<CardDeck.length;i++){
-        	CardDeck[i] = new Card(cardNames[i%13],types[i/13]);
+        for(int i=0;i<this.CardDeck.length;i++){
+        	this.CardDeck[i] = new Card(this.cardNames[i%13],this.types[i/13]);
         }
         
       
    
     }
     
+    
+    public void NewDeck(){ 
+    for (int i = 0; i < this.CardDeck.length; i++) {
+		
+    	
+		this.CardDeck[i] = null;
+    }
+
+	}
     //to shuffle
     public void shuffle(){
-        for(int i=0;i<CardDeck.length;i++){
+    	
+    	
+        for(int i=0;i<this.CardDeck.length;i++){
+        	Random randCard = new Random();
         	 int ii = randCard.nextInt(AllCards);
         	 Card NCard = CardDeck[i];
-            CardDeck[i] = CardDeck[ii];
-            CardDeck[ii] = NCard;
+            this.CardDeck[i] = this.CardDeck[ii];
+            this.CardDeck[ii] = NCard;
         }
     }        
 	
     //deal a card from the deck and return it
     
     public Card DealACard(){
-    	if (CardDeck.length > 0) {
-    		Card card = CardDeck[CardDeck.length -1] ; 
+    	if (this.CardDeck.length > 0) {
+    		Card card = this.CardDeck[this.CardDeck.length -1] ; 
         	
-    		CardDeck =  Arrays.copyOf(CardDeck, CardDeck.length -1);
+    		this.CardDeck =  Arrays.copyOf(this.CardDeck, this.CardDeck.length -1);
     		
     		
         	
@@ -60,7 +70,7 @@ public class CardDeck {
     //How many cards are left in the deck?
     
     public int LeftCards() {
-     int x = CardDeck.length;
+     int x = this.CardDeck.length;
     return x;
     }
 
